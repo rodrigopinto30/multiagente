@@ -32,6 +32,7 @@ public class AgenteUno extends Agent{
     boolean recalcular = false;
     boolean incializadorDeGraficoUno = false;
     boolean cercaAgenteAliado = false;
+    boolean caminoExtra = true;
     
     int iteradorX = 0;
     int iteradorY = 0;
@@ -375,13 +376,14 @@ public class AgenteUno extends Agent{
                                 Laberinto.limpiarMapa(Laberinto.mapaG, matrizSolucion, 2);
                                 this.marcadorFinal(filaBis, columnaBis, recorridoRecalculandoA2, Laberinto.mapaG);
                                 this.direccion(recorridoRecalculandoA2);
-                                this.direccion(recorridoA2);
+                                System.out.println(recorridoRecalculandoA2.toString());
                                 // tengo que seguir el camino recibido por el agente A2
                                 // Si me queda mas cerca donde empezo el A2
-                                if (false) {
-                                
-                            }
-                                System.out.println(recorridoA2.toString());
+//                                if (caminoExtra == true) {
+//                                    this.direccion(recorridoA2);
+//                                    System.out.println(recorridoA2.toString());
+//                                }
+                                objeto = true;
                                 corteDireccion = false;
                         }else{
                             objeto = true;
@@ -409,8 +411,14 @@ public class AgenteUno extends Agent{
                                 Laberinto.limpiarMapa(Laberinto.mapaG, matrizSolucion, 2);
                                 this.marcadorFinal(filaBis, columnaBis, recorridoRecalculandoA2, Laberinto.mapaG);
                                 this.direccion(recorridoRecalculandoA2);
-                                this.direccion(recorridoA2);
-                                System.out.println(recorridoA2.toString());
+                                             System.out.println(recorridoRecalculandoA2.toString());                   
+                                // tengo que seguir el camino recibido por el agente A2
+                                // Si me queda mas cerca donde empezo el A2
+//                                if (caminoExtra == true) {
+//                                    this.direccion(recorridoA2);
+//                                    System.out.println(recorridoA2.toString());
+//                                }    
+                                objeto =true;
                                 corteDireccion = false;
                         }
                         else{
@@ -439,8 +447,14 @@ public class AgenteUno extends Agent{
                                 Laberinto.limpiarMapa(Laberinto.mapaG, matrizSolucion, 2);
                                 this.marcadorFinal(filaBis, columnaBis, recorridoRecalculandoA2, Laberinto.mapaG);
                                 this.direccion(recorridoRecalculandoA2);
-                                this.direccion(recorridoA2);
-                                System.out.println(recorridoA2.toString());
+                                     System.out.println(recorridoRecalculandoA2.toString());                           
+                                // tengo que seguir el camino recibido por el agente A2
+                                // Si me queda mas cerca donde empezo el A2
+//                                if (caminoExtra==true) {
+//                                    this.direccion(recorridoA2);
+//                                    System.out.println(recorridoA2.toString());
+//                                }
+                                objeto = true;
                                 corteDireccion = false;
                         }else{
                             objeto = true;
@@ -468,8 +482,14 @@ public class AgenteUno extends Agent{
                                 Laberinto.limpiarMapa(Laberinto.mapaG, matrizSolucion, 2);
                                 this.marcadorFinal(filaBis, columnaBis, recorridoRecalculandoA2, Laberinto.mapaG);
                                 this.direccion(recorridoRecalculandoA2);
-                                this.direccion(recorridoA2);
-                                System.out.println(recorridoA2.toString());
+                                               System.out.println(recorridoRecalculandoA2.toString());                 
+                                // tengo que seguir el camino recibido por el agente A2
+                                // Si me queda mas cerca donde empezo el A2
+//                                if (caminoExtra == true) {
+//                                    this.direccion(recorridoA2);
+//                                    System.out.println(recorridoA2.toString());
+//                                }
+                                objeto = true;
                                 corteDireccion = false;
                         }else{
                             objeto = true;
@@ -635,7 +655,7 @@ public class AgenteUno extends Agent{
                   boolMovimiento[i] = true;
               }
               
-            if(Laberinto.mapa[fila - 1][columna] == Laberinto.a2){
+            if((Laberinto.mapa[fila - 1][columna] == Laberinto.a2) || (Laberinto.mapa[fila - 1][columna] == Laberinto.s)){
                 matrizSolucion[fila - 1][columna] = 5;
                 Laberinto.mapa[fila - 1][columna] = Laberinto.a1;
                 Laberinto.mapaG[columna][fila - 1].setIcon(Laberinto.analizar);
@@ -665,7 +685,7 @@ public class AgenteUno extends Agent{
                }
             }
             
-            if(Laberinto.mapa[fila + 1][columna] == Laberinto.a2){
+            if((Laberinto.mapa[fila + 1][columna] == Laberinto.a2) || (Laberinto.mapa[fila + 1][columna] == Laberinto.s)){
                 matrizSolucion[fila + 1][columna] = 5;
                     Laberinto.mapa[fila + 1][columna] = Laberinto.a1;
                 Laberinto.mapaG[columna][fila + 1].setIcon(Laberinto.analizar);
@@ -694,7 +714,7 @@ public class AgenteUno extends Agent{
                     boolMovimiento[0] = false;
                 }
             }
-            if(Laberinto.mapa[fila][columna - 1] == Laberinto.a2){
+            if((Laberinto.mapa[fila][columna - 1] == Laberinto.a2) || (Laberinto.mapa[fila][columna - 1] == Laberinto.s)){
                 matrizSolucion[fila][columna - 1] = 5;
                     Laberinto.mapa[fila][columna - 1] = Laberinto.a1;
                     Laberinto.mapaG[columna - 1][fila].setIcon(Laberinto.analizar);
@@ -722,7 +742,7 @@ public class AgenteUno extends Agent{
                     boolMovimiento[1] = false;
                 }
             }
-            if(Laberinto.mapa[fila][columna + 1] == Laberinto.a2){
+            if((Laberinto.mapa[fila][columna + 1] == Laberinto.a2) || (Laberinto.mapa[fila][columna + 1] == Laberinto.s)){
                 matrizSolucion[fila][columna + 1] = 5;
                     Laberinto.mapa[fila][columna + 1] = Laberinto.a2;
                     Laberinto.mapaG[columna + 1][fila].setIcon(Laberinto.analizar);
@@ -808,11 +828,11 @@ public class AgenteUno extends Agent{
             }
             elemento = 0;
             valorVariable = 0;
-              System.out.println("soy recalculando (1)");
          }
          
           if ((Laberinto.mapa[fila][columna] == Laberinto.a2) || (Laberinto.mapa[fila][columna] == 910) ) {
               Laberinto.mapaG[columna][fila].setIcon(Laberinto.analizar);
+              
           }
          
           return caminoFinal;

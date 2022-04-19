@@ -42,16 +42,16 @@ public class Laberinto implements ActionListener{
     
 //    public static int [][] mapa = new int [tamAlto][tamAncho];
     public static int[][] mapa = {{  m, m, m, m, m, m, m, m, m, m, m, m},
-                                    {m, s, s, s, s, s, 0, 0, 0, 0, 0, m},
-                                    {m, 0, a2, 0, 0, e, 0, 0, 0, 0, 0, m},
-                                    {m, e, e, e, e, e, 0, 0, 0, 0, 0, m},
-                                    {m, 0, 0, 0, 0, 0, 0, e, 0, 0, 0, m},
-                                    {m, 0, 0, 0, 0, 0, 0, e, 0, 0, 0, m},
-                                    {m, e, e, e, e, e, e, 0, 0, 0, 0, m},
                                     {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
                                     {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
                                     {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
-                                    {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, a1, m},
+                                    {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
+                                    {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
+                                    {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
+                                    {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
+                                    {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
+                                    {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
+                                    {m, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, m},
                                     {m, m, m, m, m, m, m, m, m, m, m, m}
     };
  
@@ -511,13 +511,5 @@ public class Laberinto implements ActionListener{
         }
         
     }
-
-
-
   
-
-
-  
-
-    
 }

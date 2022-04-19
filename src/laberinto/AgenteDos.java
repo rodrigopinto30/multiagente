@@ -18,53 +18,52 @@ import javax.swing.JLabel;
 
 public class AgenteDos extends Agent{
     // Contiene el movimiento que realizara el agente
-    String movAgente2;
+    private String movAgente2;
     // cuando corteDos sea true, finalizara la ejecucion del comportamiento "MovimientoDos"
-    boolean corteDos,c2, encerrado = false;
+    private boolean corteDos,c2, encerrado = false;
     // Permite ingresar al if para poder pintar la posicion en la que se encuentra A2
-    boolean incializadorDeGraficoDos = false;
+    private boolean incializadorDeGraficoDos = false;
     // Varibles que contienen el valor de fila y columna
-    private  int fila, columna = 0;
+    private int fila, columna = 0;
     // En caso de ser true indicara la finalizacion del juego
     private boolean finDos = false;
     // Crea el objeto del laberinto
-    Laberinto lab = new Laberinto();
+    private Laberinto lab = new Laberinto();
     // Posicion actual de Agente2
-    int [] posicion;
+    private int [] posicion;
     // Variables que ayudaran a almacenar el valor de posiciones actuales de los agentes
     private int iteradorX = 0;
     private int iteradorY = 0;
-    int inicioA1x = 0;
-    int inicioA1y = 0;
+    private int inicioA1x = 0;
+    private int inicioA1y = 0;
     
     private int filaBis, columnaBis = 0;
-    int x1 = 0;
-    int y1 = 0;
+    private int x1 = 0;
+    private int y1 = 0;
     
     private boolean movimientoAlternativo = true;
     private boolean objeto2 = false;
-    boolean recorridoAgente1 = false;
-    boolean recalcular2 = false;
-    boolean inicializadorDeGrafica = false;
+    private boolean recorridoAgente1 = false;
+    private boolean recalcular2 = false;
+    private boolean inicializadorDeGrafica = false;
     
     // Matriz que alojara los valores de la solucion
-    int [][] matrizSolucion;
+    private int [][] matrizSolucion;
     
     // Array que contiene los movimiento no validos
-    int [] movInval = new int [4];
+    private int [] movInval = new int [4];
     // Almacena el recorrido del A1 en caso de quedar encerrado
-    String recorridoA1 = new String();
-    String caminoSucio1 = new String("");
+    private String recorridoA1 = new String();
+    private String caminoSucio1 = new String("");
     
+    // Metodo que se ejecutara una vez creado el AgenteDos
     protected void setup(){
         addBehaviour(new MovimientoDos());
     }
     
-    /*
-    Se ejecuta cuando finaliza el agente.
-    */
+    //Se ejecuta cuando finaliza el agente.
     protected void takeDown(){
-        System.out.println("soy el agente 2 y finalice mi ejecucion");
+        System.out.println("Fin AgenteDos");
     }
  
     
@@ -379,7 +378,7 @@ public class AgenteDos extends Agent{
            return direccionRetornoDos;
         }
 
-        //
+        
         public void direccion(int dir){
             boolean corteDireccion = true;
             /*
@@ -401,7 +400,7 @@ public class AgenteDos extends Agent{
                             actualizarAbajo();                                
                             corteDireccion = false;
                         }else if((recalcular2 == true) && (finDos == false) && (corteDos == false)){
-                                // Aplicar modularidad
+                                // Aplicar modularidad urgente
                                 filaBis = fila;
                                 columnaBis = columna;
                                 recorridoA1 = this.recalculando9();
@@ -429,7 +428,7 @@ public class AgenteDos extends Agent{
                             actualizarIzquierda();
                             corteDireccion = false;                            
                         }else if ((recalcular2 == true) && (finDos == false) && (corteDos == false)) {
-                                // Aplicar modularidad
+                                // Aplicar modularidad urgente
                                 filaBis = fila;
                                 columnaBis = columna;
                                 recorridoA1 = this.recalculando9();
@@ -461,7 +460,7 @@ public class AgenteDos extends Agent{
                             actualizarArriba();
                             corteDireccion = false;
                         }else if ((recalcular2 == true) && (finDos == false) && (corteDos == false)) {
-                               // Aplicar modularidad
+                               // Aplicar modularidad urgente
                                filaBis = fila;
                                columnaBis = columna;
                                recorridoA1 = this.recalculando9();
@@ -490,7 +489,7 @@ public class AgenteDos extends Agent{
                             actualizarDerecha();
                             corteDireccion = false;
                         }else if ((recalcular2 == true) && (finDos == false) && (corteDos == false)) {
-                                // Aplicar modularidad
+                                // Aplicar modularidad urgente
                                 filaBis = fila;
                                 columnaBis = columna;
                                 recorridoA1 = this.recalculando9();
@@ -714,9 +713,8 @@ public class AgenteDos extends Agent{
             return continuarRecorridoDos;
         }        
         
-        // Funcion que busca un camino alternativo hacia el objetivo, lo lleva a cabo aplicando un algoritmo de busqueda
+        // Funcion que busca un camino alternativo hacia el objetivo, lo lleva a cabo aplicando un algoritmo de busqueda.
         public String recalculando9() {
-
             int valorVariable, elemento = 0;
             int[] valorMovimiento = new int[4];
             boolean[] boolMovimiento = new boolean[4];
@@ -913,7 +911,7 @@ public class AgenteDos extends Agent{
             return caminoFinal;
         }
         
-        // Marca el camino final
+        // Marca el camino final que realizara el AgenteDos en caso de que, previamente, haya colisionado con algun obstaculo
         public void marcadorFinal(int filaFinal, int columnaFinal, String recorrido, JLabel [][] mapaL){
             String recorridoFinal = recorrido.substring(0, recorrido.length());
             int iterador = 0;
@@ -921,6 +919,7 @@ public class AgenteDos extends Agent{
             int cf = columnaFinal;
             boolean pasillo = true;
             
+            // Ejecutara el bucle cinco veces
             while(iterador < 5){
                 filaFinal = ff;
                 columnaFinal = cf;
@@ -929,6 +928,9 @@ public class AgenteDos extends Agent{
                     switch(recorrido.charAt(i)){
                         case 'w':
                             filaFinal = filaFinal - 1;
+                            /* Si la variable pasillo es True pintara, en la grafica, un pasillo. Por otro lado, cuando sea
+                                false remarcara cada casilla con color amarillo.
+                            */
                             if(pasillo){
                                 mapaL[columnaFinal][filaFinal].setIcon(Laberinto.pasillo);
                                
@@ -976,7 +978,7 @@ public class AgenteDos extends Agent{
         }        
         
         // Realiza calculos para determinar si debe seguir por su camino actual o debe cambiar de direccion.
-        // * Cambiar de direcion significa dirigirse hacia donde comenzo el AgenteUno, asi despues sigue su camino.
+        // * Cambiar de direcion significa dirigirse hacia donde comenzo el AgenteUno, asi despues siguir su camino.
         public void continuarCaminoRecibido(){
                 objeto2 = false;
                 // Fila y columna de la posicion final de A1
@@ -1037,6 +1039,7 @@ public class AgenteDos extends Agent{
             Laberinto.mapaG[columna][fila - 1].setIcon(Laberinto.pasillo2);
             Laberinto.mapaG[columna][fila].setIcon(Laberinto.agenteDos);
         }
+        
         // Realiza movimiento hacia izquierda y actualiza todas las variables correspondientes        
         public void actualizarIzquierda(){
             columna = columna - 1;
@@ -1052,6 +1055,7 @@ public class AgenteDos extends Agent{
             Laberinto.mapaG[columna + 1][fila].setIcon(Laberinto.pasillo2);
             Laberinto.mapaG[columna][fila].setIcon(Laberinto.agenteDos);
         }
+        
         // Realiza movimiento hacia arriba y actualiza todas las variables correspondientes        
         public void actualizarArriba(){
             fila = fila - 1;
@@ -1067,6 +1071,7 @@ public class AgenteDos extends Agent{
             Laberinto.mapaG[columna][fila + 1].setIcon(Laberinto.pasillo2);
             Laberinto.mapaG[columna][fila].setIcon(Laberinto.agenteDos); 
         }
+        
         // Realiza movimiento hacia derecha y actualiza todas las variables correspondientes        
         public void actualizarDerecha(){
             columna = columna + 1;
