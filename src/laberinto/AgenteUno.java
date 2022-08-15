@@ -1,6 +1,6 @@
 
 package laberinto;
-
+    
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
@@ -61,7 +61,7 @@ public class AgenteUno extends Agent{
     private int filaBis, columnaBis = 0;
     private int fila, columna = 0;
     private int filaMatrizSolucion, columnaMatrizSolucion = 0;
-    // movimiento hacia derecha
+    // movimiento hacia derecha                                                                                                            
     private boolean derecha = false;
     //posicion incial de A1
     int [] pos;
@@ -76,15 +76,18 @@ public class AgenteUno extends Agent{
     
     // Inicia el agente
     protected void setup(){
-//
         addBehaviour(new MovimientoUno());
     }
       
+    // Finaliza el agente
     protected void takeDown(){
-        System.out.println("soy agente y finalice");     
+        System.out.println("El Agente Uno finalizó su ejecución");     
     }
     
     private class MovimientoUno extends Behaviour{
+        
+        
+    
     
         private MessageTemplate mt1 = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
         
@@ -255,6 +258,9 @@ public class AgenteUno extends Agent{
  
         // Ejecuta movimiento a izquierda o derecha.
         public char movimiento(){
+            /*
+                ACA ESTA EL PROBLEMA
+            */
                 movRanx= 'd';
                 boolean bandera = true;
                 if ((Laberinto.mapa[fila][columna + 1] != Laberinto.m) && (Laberinto.mapa[fila][columna + 1] != Laberinto.e) && (Laberinto.mapa[fila][columna + 1] != Laberinto.a1)&& (Laberinto.mapa[fila][columna + 1] != Laberinto.a2) && (derecha == false)) {
@@ -850,7 +856,10 @@ public class AgenteUno extends Agent{
                 // Guarda la posicion actual de A1
                 int [] posActual1 = posicionActual(Laberinto.mapa, Laberinto.a1);
                 fila = posActual1[0];
-                columna = posActual1[1];                        
+                columna = posActual1[1];              
+                /*
+                    ACA ESTA EL PROBLEMA
+                */
                 System.out.println("sigo mi camino");
                 recorridoAgente2 = true;
                 recalcular = true;
@@ -1111,7 +1120,10 @@ public class AgenteUno extends Agent{
         }
         
         @Override
-        public boolean done() {return corteUno; }
+        public boolean done() {
+         
+            return corteUno; 
+        }
 
     }
    

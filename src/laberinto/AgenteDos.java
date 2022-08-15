@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 public class AgenteDos extends Agent{
@@ -1090,7 +1091,9 @@ public class AgenteDos extends Agent{
                 
         // Funcion que si devuelve 'true' indicara la finalizacion del comportamiento "MovimientoDos".
         @Override
-        public boolean done() {return corteDos; }
+        public boolean done() {     
+            return corteDos;  
+        }
     
     
     }

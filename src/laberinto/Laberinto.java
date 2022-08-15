@@ -36,6 +36,8 @@ public class Laberinto implements ActionListener{
     public static int [] posicionInicialAgente2 = new int [2];
     public static int [] posicionFinalAgente1 = new int [2];
     public static int [] posicionFinalAgente2 = new int [2];
+    // Permite mostrar mensaje final
+    public static boolean finJuego = false;
     
     static int tamAlto = 12;
     static int tamAncho = 12;
